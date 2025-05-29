@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Volánbusz | Számla megtekintés</title>
+</head>
+<body>
+    <nav>
+        <a href="/frontend/"><img src="/public/logo.png" alt=""></a>
+        <div>
+            <a href="/frontend/">Főoldal</h1></a>
+        </div>
+        <div>
+            <a href="/frontend/create/"><button>Új számla</button></a>
+        </div>
+    </nav>
+    <div class="container">
+        <div>
+            <div id="invoiceHeader">
+                <div id="titleContainer">
+                    <div>
+                        <div id="invoice-category"></div>
+                        <div>/</div>
+                        <div id="invoice-author"></div>
+                    </div>
+                    <h1 id="invoice-title"></h1>
+                    <div id="invoice-title-footer" style="margin-left: 10px;">
+                        <div id="invoice-info">
+                            <div id="invoice-created"></div>
+                            <div>/</div>
+                            <div id="invoice-changed"></div>
+                        </div>
+                        <div id="invoice-buttons">
+                            <button id="edit-button">Szerkesztés</button>
+                            <button id="delete-button">Törlés</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="invoiceContent">
+                <div id="invoice-content"></div>
+            </div>
+        </div>
+    </div>
+
+
+<script src="script.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Volánbusz | Új Blog</title>
+</head>
+<body>
+    <nav>
+        <a href="/frontend/"><img src="/public/logo.png" alt=""></a>
+        <div>
+            <a href="/frontend/">Főoldal</h1></a>
+        </div>
+        <div>
+            <a href="/frontend/create/"><button>Új számla</button></a>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="invoicecreation">
+            <h1>Számla készítése</h1>
+            <form class="form create-form">
+                <input name="issuerName" type="text" placeholder="Kiállító neve"/>
+                <input name="issuerAddress" type="text" placeholder="Kiállító címe"/>
+                <input name="issuerTaxId" type="text" placeholder="Kiállító adószáma"/>
+                <input name="receipentName" type="text" placeholder="Vevő neve"/>
+                <input name="receipentAddress" type="text" placeholder="Vevő címe"/>
+                <input name="receipentTaxId" type="text" placeholder="Vevő adószáma"/>
+                <input name="payDate" type="date" placeholder="Fizetési hatátridő"/>
+                <input name="endPrice" type="number" placeholder="Végősszeg" />
+                <input name="VAT" type="number" placeholder="ÁFA" />
+                <button id="new-invoice-button" type="submit">Új blog elkészítése</button>
+            </form>
+        </div>
+    </div>
+
+
+
+<script src="script.js" type="module"></script>
+</body>
+</html>
