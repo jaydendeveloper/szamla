@@ -21,10 +21,17 @@ document.addEventListener("DOMContentLoaded", function () {
 			return response.json();
 		})
 		.then((data) => {
-			form["title"].value = data.title;
-			form["author"].value = data.author;
-			form["content"].value = data.content;
-			form["category"].value = data.category;
+			const issuerData = JSON.parse(data.issuerData);
+			const receipentData = JSON.parse(data.receipentData);
+			form["issuerName"].value = issuerData.name;
+			form["issuerAddress"].value = issuerData.address;
+			form["issuerTaxId"].value = issuerData.taxId;
+			form["receipentName"].value = receipentData.name;
+			form["receipentAddress"].value = receipentData.address;
+			form["receipentTaxId"].value = receipentData.taxId;
+			form["payDate"].value = data.payDate;
+			form["endPrice"].value = data.endPrice;
+			form["VAT"].value = data.VAT;
 		})
 		.catch((error) => {
 			console.error("Error fetching invoice data:", error);
@@ -34,5 +41,5 @@ document.addEventListener("DOMContentLoaded", function () {
 form.addEventListener("submit", async (event) => {
 	event.preventDefault();
 
-	editBlog();
+	editInvoice();
 });

@@ -59,10 +59,11 @@ app.post("/invoice", async (req, res) => {
 	})
 
 	db.prepare(
-		"INSERT INTO invoices (issuerData, receipentData, issueDate, payDate, endPrice, VAT) VALUES (?, ?, ?, ?, ?, ?)"
+		"INSERT INTO invoices (issuerData, receipentData, issueDate, changeDate, payDate, endPrice, VAT) VALUES (?, ?, ?, ?, ?, ?, ?)"
 	).run(
 		issuerData,
 		receipentData,
+		date.toISOString(),
 		date.toISOString(),
 		payDate,
 		endPrice,
@@ -101,8 +102,8 @@ app.put("/invoice/:id", async (req, res) => {
 	const date = new Date();
 
 	db.prepare(
-		"UPDATE invoices SET issuerData = ?, receipentData = ?, payDate = ?, endPrice = ?, VAT = ? WHERE id = ?"
-	).run(issuerData, receipentData,payDate,endPrice, VAT ,id);
+		"UPDATE invoices SET issuerData = ?, receipentData = ?, changeDate = ?, payDate = ?, endPrice = ?, VAT = ? WHERE id = ?"
+	).run(issuerData, receipentData, new Date().toISOString(), payDate,endPrice, VAT ,id);
 
 	res.status(204).send();
 });

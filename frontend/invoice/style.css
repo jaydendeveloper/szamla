@@ -2,7 +2,6 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-bottom: 50px;
 	padding: 20px;
 	border-bottom: 2px solid black;
 }
@@ -23,8 +22,11 @@
 	width: 100%;
 }
 #invoice-content {
-	text-align: justify;
-	padding: 20px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 50px;
+	text-align: center;
 }
 #invoice-info {
 	display: flex;
@@ -38,4 +40,45 @@
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
+}
+#invoice-issuer-name{
+	font-weight: 600;
+	font-size: 1.5rem;
+}
+#invoice-issuer-address {
+	font-style: italic;
+	font-size: 0.9rem;
+}
+#invoice-issuer-tax-id {
+	font-style: italic;
+	font-size: 0.9rem;
+}
+#invoice-receipent-name {
+	font-weight: 600;
+	font-size: 1.5rem;
+}
+#invoice-receipent-address {
+	font-style: italic;
+	font-size: 0.9rem;
+}
+#invoice-receipent-tax-id {
+	font-style: italic;
+	font-size: 0.9rem;
+}
+#invoice-payment-container{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	gap: 10px;
+	margin-top: 10px;
+}
+#invoice-pay-date,
+#invoice-end-price,
+#invoice-vat
+{
+	font-weight: 600;
+	font-size: 1.5rem;
+}
+#invoice-payment-info{
+	border-top: 2px solid black;
 }

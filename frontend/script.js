@@ -6,8 +6,8 @@ function renderInvoice(invoice) {
 	return `
      <div class="invoice">
             <div class="title-container">
-                <h1>Számla: ${invoice.id} - ${invoice.issueDate}</h1>
-                <div>${invoice.createdAt}</div>
+                <h1>Számla: ${invoice.id}</h1>
+                <div>${invoice.issueDate}</div>
             </div>
 
             <div class="card-footer">

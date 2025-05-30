@@ -6,7 +6,7 @@
 h1,
 div,
 a {
-	color: white;
+	color: black;
 }
 
 body {
@@ -39,7 +39,11 @@ nav {
 	background-color: #186c3c;
 	width: 98%;
 }
-
+nav > a {
+	color: white;
+	font-weight: 600;
+	text-transform: uppercase;
+}
 button {
 	padding: 10px;
 	background-color: #186c3c;
@@ -70,7 +74,7 @@ button:hover {
 .title-container > h1 {
 	font-size: 2rem;
 	font-weight: 600;
-	color: white;
+	color: black;
 }
 
 h1 {
@@ -81,6 +85,7 @@ a {
 	text-decoration: none;
 	text-transform: uppercase;
 	font-weight: 600;
+	color: white;
 }
 #logo{
 	width: 100px;

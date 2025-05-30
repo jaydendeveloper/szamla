@@ -60,13 +60,27 @@ export async function editInvoice() {
 	const form = document.querySelector(".form");
 	const formData = new FormData(form);
 	const data = Object.fromEntries(formData.entries());
-
+	const issuerData = JSON.stringify({
+		name: data.issuerName,
+		address: data.issuerAddress,
+		taxId: data.issuerTaxId
+	});
+	const receipentData = JSON.stringify({
+		name: data.receipentName,
+		address: data.receipentAddress,
+		taxId: data.receipentTaxId
+	});
+	console.log(data);
 	const res = await fetch("http://localhost:5000/invoice/" + id, {
 		method: "PUT",
 		headers: {
 			"Content-Type": "application/json",
 		},
-		body: JSON.stringify(data),
+		body: JSON.stringify({
+			issuerData: issuerData,
+			receipentData: receipentData,
+			...data,
+		}),
 	});
 
 	if (!res.ok) {

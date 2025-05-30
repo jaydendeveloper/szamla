@@ -9,7 +9,7 @@
 </head>
 <body>
     <nav>
-        <a href="/frontend/"><img src="/public/logo.png" alt=""></a>
+        <a href="/frontend/"><img id="logo" src="/public/logo.png" alt=""></a>
         <div>
             <a href="/frontend/">Főoldal</h1></a>
         </div>
@@ -21,11 +21,6 @@
         <div>
             <div id="invoiceHeader">
                 <div id="titleContainer">
-                    <div>
-                        <div id="invoice-category"></div>
-                        <div>/</div>
-                        <div id="invoice-author"></div>
-                    </div>
                     <h1 id="invoice-title"></h1>
                     <div id="invoice-title-footer" style="margin-left: 10px;">
                         <div id="invoice-info">
@@ -40,8 +35,26 @@
                     </div>
                 </div>
             </div>
-            <div id="invoiceContent">
-                <div id="invoice-content"></div>
+            <div id="invoice-content">
+                <div id="invoice-issuer">
+                    <div>Eladó</div>
+                    <div id="invoice-issuer-name"></div>
+                    <div id="invoice-issuer-address"></div>
+                    <div id="invoice-issuer-tax-id"></div>
+                </div>
+                <div id="invoice-receipent">
+                    <div>Vevő</div>
+                    <div id="invoice-receipent-name"></div>
+                    <div id="invoice-receipent-address"></div>
+                    <div id="invoice-receipent-tax-id"></div>
+                </div>
+            </div>
+            <div id="invoice-payment-info">
+                <div id="invoice-payment-container">
+                    <div id="invoice-pay-date"></div>
+                    <div id="invoice-vat"></div>
+                    <div id="invoice-end-price"></div>
+                </div>
             </div>
         </div>
     </div>
