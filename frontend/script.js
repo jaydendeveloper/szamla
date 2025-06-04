@@ -6,7 +6,7 @@ function renderInvoice(invoice) {
 	return `
      <div class="invoice">
             <div class="title-container">
-                <h1>Számla: ${invoice.id}</h1>
+                <h1>Számla: ${invoice.id} ${invoice.storno == 1 ? "(Sztornózva)" : ""}</h1>
                 <div>${invoice.issueDate}</div>
             </div>
 

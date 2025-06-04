@@ -74,6 +74,7 @@
 }
 #invoice-pay-date,
 #invoice-end-price,
+#invoice-net-price,
 #invoice-vat
 {
 	font-weight: 600;

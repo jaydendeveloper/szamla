@@ -1,4 +1,4 @@
-import { editInvoice } from "../invoiceActions.js";
+import { stornoWithNewInvoice } from "../invoiceActions.js";
 
 const form = document.querySelector(".form");
 
@@ -41,5 +41,5 @@ document.addEventListener("DOMContentLoaded", function () {
 form.addEventListener("submit", async (event) => {
 	event.preventDefault();
 
-	editInvoice();
+	stornoWithNewInvoice();
 });

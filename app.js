@@ -59,7 +59,7 @@ app.post("/invoice", async (req, res) => {
 	})
 
 	db.prepare(
-		"INSERT INTO invoices (issuerData, receipentData, issueDate, changeDate, payDate, endPrice, VAT) VALUES (?, ?, ?, ?, ?, ?, ?)"
+		"INSERT INTO invoices (issuerData, receipentData, issueDate, changeDate, payDate, endPrice, VAT, storno) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
 	).run(
 		issuerData,
 		receipentData,
@@ -67,7 +67,8 @@ app.post("/invoice", async (req, res) => {
 		date.toISOString(),
 		payDate,
 		endPrice,
-		VAT
+		VAT,
+		0
 	);
 });
 
@@ -87,11 +88,7 @@ app.delete("/invoice/:id", async (req, res) => {
 
 app.put("/invoice/:id", async (req, res) => {
 	const { id } = req.params;
-	const { issuerData, receipentData, payDate, endPrice, VAT } = req.body;
-
-	if (!issuerData || !receipentData || !payDate || !endPrice || !VAT) {
-		return res.status(400).json({ error: "Missing required fields" });
-	}
+	const { storno } = req.body;
 
 	const invoice = db.prepare("SELECT * FROM invoices WHERE id = ?").get(id);
 
@@ -102,8 +99,8 @@ app.put("/invoice/:id", async (req, res) => {
 	const date = new Date();
 
 	db.prepare(
-		"UPDATE invoices SET issuerData = ?, receipentData = ?, changeDate = ?, payDate = ?, endPrice = ?, VAT = ? WHERE id = ?"
-	).run(issuerData, receipentData, new Date().toISOString(), payDate,endPrice, VAT ,id);
+		"UPDATE invoices SET storno = ? WHERE id = ?"
+	).run(storno, id);
 
 	res.status(204).send();
 });

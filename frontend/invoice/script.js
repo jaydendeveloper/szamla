@@ -1,4 +1,4 @@
-import { deleteInvoice } from "../invoiceActions.js";
+import { calculateNetPrice, stornoInvoice } from "../invoiceActions.js";
 
 document.addEventListener("DOMContentLoaded", function () {
 	const invoiceTitle = document.getElementById("invoice-title");
@@ -11,13 +11,16 @@ document.addEventListener("DOMContentLoaded", function () {
 	const receipentAddress = document.getElementById("invoice-receipent-address");
 	const receipentTaxNumber = document.getElementById("invoice-receipent-tax-id");
 	const invoicePayDate = document.getElementById("invoice-pay-date");
+	const invoiceNetPrice = document.getElementById("invoice-net-price");
 	const invoiceVAT = document.getElementById("invoice-vat");
 	const invoiceEndPrice = document.getElementById("invoice-end-price");
-	const deleteButton = document.getElementById("delete-button");
-	const editButton = document.getElementById("edit-button");
-	editButton.addEventListener("click", redirectToEdit);
-	deleteButton.addEventListener("click", deleteInvoice);
-
+/* 	const deleteButton = document.getElementById("delete-button");
+ */	const stornoButton = document.getElementById("storno-button");
+	const stornoWithNewInvoiceButton = document.getElementById("storno-with-new-invoice-button");
+	stornoWithNewInvoiceButton.addEventListener("click", redirectToStorno);
+	stornoButton.addEventListener("click", stornoInvoice)
+/* 	deleteButton.addEventListener("click", deleteInvoice);
+ */
 	const url = new URL(window.location.href);
 	const invoiceId = url.searchParams.get("id");
 
@@ -48,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			const changeDate = new Date(data.changeDate).toLocaleDateString("hu-HU", dateOptions);
 			const issuerData = JSON.parse(data.issuerData);
 			const receipentData = JSON.parse(data.receipentData);			
-			invoiceTitle.textContent = "Számla:" + data.id;
+			invoiceTitle.textContent = "Számla:" + data.id + " " + (data.storno ? "(Sztornózva)" : "");
 			invoiceCreated.textContent = "Teljesítés dátuma: " + issueDate;
 			invoiceChanged.textContent = "Módosítás dátuma: " + (changeDate || issueDate);
 			issuerName.textContent = issuerData.name;
@@ -58,6 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			receipentAddress.textContent = "Cím: " + receipentData.address;
 			receipentTaxNumber.textContent = "Adószám: " + receipentData.taxId;
 			invoicePayDate.textContent = "Fizetési határidő: " + data.payDate.replaceAll("-", ".");
+			invoiceNetPrice.textContent = "Nettó ár: " + calculateNetPrice(data.endPrice, data.VAT);
 			invoiceVAT .textContent = "ÁFA: " + data.VAT + "%";
 			invoiceEndPrice.textContent = "Végösszeg: " + data.endPrice.toLocaleString("hu-HU", { style: "currency", currency: "HUF" });
 			document.title = "Számla | " + data.id;
@@ -67,12 +71,12 @@ document.addEventListener("DOMContentLoaded", function () {
 		});
 });
 
-function redirectToEdit() {
+function redirectToStorno() {
 	const url = new URL(window.location.href);
 	const invoiceId = url.searchParams.get("id");
 	if (!invoiceId) {
 		alert("Invoice ID not found in URL.");
 		return;
 	}
-	window.location.href = `/frontend/edit/index.html?id=${invoiceId}`;
+	window.location.href = `/frontend/storno/index.html?id=${invoiceId}`;
 }
