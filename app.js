@@ -70,6 +70,8 @@ app.post("/invoice", async (req, res) => {
 		VAT,
 		0
 	);
+
+	res.status(200).send();
 });
 
 app.delete("/invoice/:id", async (req, res) => {

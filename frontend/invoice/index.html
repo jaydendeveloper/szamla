@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="style.css">
-    <title>Volánbusz | Számla megtekintés</title>
+    <title>Invoicer | Számla</title>
 </head>
 <body>
     <nav>
-        <a href="/frontend/"><img id="logo" src="/public/logo.png" alt=""></a>
         <div>
             <a href="/frontend/">Főoldal</h1></a>
         </div>
@@ -23,11 +22,6 @@
                 <div id="titleContainer">
                     <h1 id="invoice-title"></h1>
                     <div id="invoice-title-footer" style="margin-left: 10px;">
-                        <div id="invoice-info">
-                            <div id="invoice-created"></div>
-                            <div>/</div>
-                            <div id="invoice-changed"></div>
-                        </div>
                         <div id="invoice-buttons">
                             <button id="storno-button">Sztornó</button>
                             <button id="storno-with-new-invoice-button">Sztornó új számlával</button>
@@ -49,9 +43,12 @@
                     <div id="invoice-receipent-tax-id"></div>
                 </div>
             </div>
+            <div id="invoice-date-container">
+                <div id="invoice-created"></div>
+                <div id="invoice-pay-date"></div>
+            </div>
             <div id="invoice-payment-info">
                 <div id="invoice-payment-container">
-                    <div id="invoice-pay-date"></div>
                     <div id="invoice-net-price"></div>
                     <div id="invoice-vat"></div>
                     <div id="invoice-end-price"></div>

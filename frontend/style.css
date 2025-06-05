@@ -36,7 +36,7 @@ nav {
 	align-items: center;
 	justify-content: space-between;
 	padding: 20px;
-	background-color: #186c3c;
+	background-color: #ff6434;
 	width: 98%;
 }
 nav > a {
@@ -46,7 +46,7 @@ nav > a {
 }
 button {
 	padding: 10px;
-	background-color: #186c3c;
+	background-color: #ff6434;
 	color: white;
 	border-radius: 10px;
 	border: none;

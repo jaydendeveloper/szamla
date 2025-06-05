@@ -24,6 +24,7 @@ export async function createInvoice(form) {
 	if (!res.ok) {
 		const error = await res.json();
 		console.error(error);
+		window.location.href = "/frontend";
 		return;
 	}
 	window.location.href = "/frontend";

@@ -53,18 +53,17 @@ document.addEventListener("DOMContentLoaded", function () {
 			const receipentData = JSON.parse(data.receipentData);			
 			invoiceTitle.textContent = "Számla:" + data.id + " " + (data.storno ? "(Sztornózva)" : "");
 			invoiceCreated.textContent = "Teljesítés dátuma: " + issueDate;
-			invoiceChanged.textContent = "Módosítás dátuma: " + (changeDate || issueDate);
 			issuerName.textContent = issuerData.name;
 			issuerAddress.textContent = "Cím: " + issuerData.address;
 			issuerTaxNumber.textContent = "Adószám: " +issuerData.taxId;
 			receipentName.textContent = receipentData.name;
 			receipentAddress.textContent = "Cím: " + receipentData.address;
 			receipentTaxNumber.textContent = "Adószám: " + receipentData.taxId;
-			invoicePayDate.textContent = "Fizetési határidő: " + data.payDate.replaceAll("-", ".");
+			invoicePayDate.textContent = "Fizetési határidő: " + new Date(data.payDate).toLocaleDateString("hu-HU", dateOptions);
 			invoiceNetPrice.textContent = "Nettó ár: " + calculateNetPrice(data.endPrice, data.VAT);
 			invoiceVAT .textContent = "ÁFA: " + data.VAT + "%";
 			invoiceEndPrice.textContent = "Végösszeg: " + data.endPrice.toLocaleString("hu-HU", { style: "currency", currency: "HUF" });
-			document.title = "Számla | " + data.id;
+			document.title = " Invoicer | Számla: " + data.id;
 		})
 		.catch((error) => {
 			console.error("Error fetching invoice data:", error);
